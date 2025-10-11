@@ -1,11 +1,75 @@
+import { useState, useEffect } from "react";
 import Header from "../header/Header";
+import Main from "../main/Main";
+import Footer from "../footer/Footer";
+import ModalWithForm from "../modal-with-form/ModalWithForm";
+import ItemModal from "../item-modal/ItemModal";
+import { getWeatherData } from "../../utils/weatherApi";
+import { defaultClothingItems } from "../../utils/clothingItems";
 import styles from "./App.module.css";
 
 function App() {
+  const [weatherData, setWeatherData] = useState({});
+  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
+
+  const handleOpenAddItemModal = () => setActiveModal("add-garment");
+  const handleCloseModal = () => setActiveModal("");
+  const handleCardClick = (card) => {
+    setActiveModal("preview");
+    setSelectedCard(card);
+  };
+
+  useEffect(() => {
+    const fetchWeatherData = async () => {
+      try {
+        const weather = await getWeatherData();
+        setWeatherData(weather);
+      } catch (error) {
+        console.error("Failed to fetch weather data:", error);
+      }
+    };
+    fetchWeatherData();
+  }, []);
+
+  useEffect(() => {
+    const handleEscKey = (event) => {
+      if (event.key === "Escape") handleCloseModal();
+    };
+
+    if (activeModal) {
+      document.addEventListener("keydown", handleEscKey);
+      return () => document.removeEventListener("keydown", handleEscKey);
+    }
+  }, [activeModal]);
+
   return (
-    <div className={styles.App}>
-      <Header />
-      
+    <div className={styles.app}>
+      <Header 
+        onAddItemClick={handleOpenAddItemModal}
+        weatherData={weatherData}
+      />
+      <Main
+        weatherData={weatherData}
+        clothingItems={clothingItems}
+        onCardClick={handleCardClick}
+      />
+      <Footer />
+
+      <ModalWithForm
+        title="New garment"
+        buttonText="Add garment"
+        name="add-garment"
+        isOpen={activeModal === "add-garment"}
+        onClose={handleCloseModal}
+      />
+
+      <ItemModal
+        card={selectedCard}
+        isOpen={activeModal === "preview"}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 }
