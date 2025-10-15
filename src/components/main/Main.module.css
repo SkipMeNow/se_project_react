@@ -1,49 +1,80 @@
 .main {
-    padding: 0 40px;
-    min-height: calc(100vh - 200px);
+  padding: 0 40px;
+  min-height: calc(100vh - 200px);
 }
 
 .clothingSection {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .sectionTitle {
-    font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-    margin-bottom: 34px;
-    color: #000;
+  font-family: "CabinetGroteska", "Inter", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 34px;
+  color: #000;
 }
 
 .clothingList {
-    display: grid;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 325px);
+  justify-content: start;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 1200px) {
+  .clothingList {
     grid-template-columns: repeat(auto-fit, 325px);
-    justify-content: flex-start;
-    gap: 20px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    gap: 18px;
+  }
 }
 
 @media (max-width: 1024px) {
-    .main {
-        padding: 0 40px;
-    }
+  .main {
+    padding: 0 40px;
+  }
+
+  .clothingList {
+    grid-template-columns: repeat(auto-fit, 300px);
+    gap: 16px;
+  }
 }
 
 @media (max-width: 768px) {
-    .main {
-        padding: 0 16px;
-    }
+  .main {
+    padding: 0 16px;
+  }
 
-    .clothingList {
-        gap: 16px;
-    }
+  .clothingList {
+    grid-template-columns: repeat(auto-fit, 280px);
+    gap: 16px;
+  }
 
-    .sectionTitle {
-        font-size: 16px;
-        line-height: 20px;
-        margin-bottom: 24px;
-    }
+  .sectionTitle {
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 0 12px;
+  }
+
+  .clothingList {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    max-width: 100%;
+  }
+
+  .sectionTitle {
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 20px;
+  }
 }

@@ -21,6 +21,22 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleAddItemSubmit = (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const newItem = {
+      _id: Date.now().toString(), // Simple ID generation
+      name: formData.get("name"),
+      weather: formData.get("weather"),
+      link: formData.get("imageUrl"),
+    };
+
+    setClothingItems((prevItems) => [...prevItems, newItem]);
+    handleCloseModal();
+    event.target.reset(); // Clear the form
+  };
+
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
@@ -46,7 +62,7 @@ function App() {
 
   return (
     <div className={styles.app}>
-      <Header 
+      <Header
         onAddItemClick={handleOpenAddItemModal}
         weatherData={weatherData}
       />
@@ -63,6 +79,7 @@ function App() {
         name="add-garment"
         isOpen={activeModal === "add-garment"}
         onClose={handleCloseModal}
+        onSubmit={handleAddItemSubmit}
       />
 
       <ItemModal

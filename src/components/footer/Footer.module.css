@@ -8,7 +8,7 @@
 }
 
 .copyright {
-  font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
+  font-family: "CabinetGroteska", "Inter", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
@@ -17,7 +17,7 @@
 }
 
 .year {
-  font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
+  font-family: "CabinetGroteska", "Inter", sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
@@ -25,14 +25,35 @@
   margin: 0;
 }
 
+@media (max-width: 1024px) {
+  .footer {
+    padding: 24px 40px;
+  }
+}
+
 @media (max-width: 768px) {
   .footer {
     padding: 24px 16px;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
   }
-  
+
   .copyright,
   .year {
     font-size: 14px;
     line-height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 20px 12px;
+  }
+
+  .copyright,
+  .year {
+    font-size: 12px;
+    line-height: 16px;
   }
 }

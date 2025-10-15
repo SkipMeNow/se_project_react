@@ -5,12 +5,8 @@ export default function Footer() {
 
   return (
     <footer className={styles.footer}>
-      <p className={styles.copyright}>
-        Developed by Terrence Tegegne
-      </p>
-      <p className={styles.year}>
-        {currentYear}
-      </p>
+      <p className={styles.copyright}>Developed by Terrence Tegegne</p>
+      <p className={styles.year}>{currentYear}</p>
     </footer>
   );
 }

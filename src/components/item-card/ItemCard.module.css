@@ -1,97 +1,135 @@
 .card {
-    position: relative;
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease;
-    width: 325px;
-    height: 328px;
+  position: relative;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+  width: 325px;
+  height: 328px;
 }
 
 .card:hover {
-    transform: translateY(-4px);
+  transform: translateY(-4px);
 }
 
 .cardHeader {
-    position: absolute;
-    top: 12px;
-    left: 16px;
-    right: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    z-index: 2;
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 2;
 }
 
 .cardName {
-    margin: 0;
-    font-family: 'Cabinet Grotesk', 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 20px;
-    color: rgba(0, 0, 0, 0.5);
-    background: white;
-    padding: 2px 12px;
-    border-radius: 4px;
-    max-width: 70%;
+  margin: 0;
+  font-family: "CabinetGroteska", "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: rgba(0, 0, 0, 0.5);
+  background: white;
+  padding: 2px 12px;
+  border-radius: 4px;
+  max-width: 70%;
 }
 
 .likeButton {
-    background: white;
-    border: none;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s ease;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease;
 }
 
 .likeButton:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .likeIcon {
-    width: 16px;
-    height: 16px;
-    fill: none;
-    stroke: #000;
-    stroke-width: 1.5;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: #000;
+  stroke-width: 1.5;
 }
 
 .cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .card {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    cursor: pointer;
-    display: block;
+    max-width: 300px;
+    height: 300px;
+  }
 }
 
 @media (max-width: 768px) {
-    .card {
-        border-radius: 16px;
-    }
+  .card {
+    width: 100%;
+    max-width: 280px;
+    height: 280px;
+    border-radius: 16px;
+  }
 
-    .cardImage {
-        height: 250px;
-    }
+  .cardName {
+    font-size: 14px;
+    line-height: 18px;
+  }
 
-    .cardName {
-        font-size: 14px;
-        line-height: 18px;
-    }
+  .likeButton {
+    width: 32px;
+    height: 32px;
+  }
 
-    .likeButton {
-        width: 32px;
-        height: 32px;
-    }
+  .likeIcon {
+    width: 14px;
+    height: 14px;
+  }
+}
 
-    .likeIcon {
-        width: 14px;
-        height: 14px;
-    }
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+    max-width: 100%;
+    height: 250px;
+    border-radius: 12px;
+  }
+
+  .cardHeader {
+    top: 8px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .cardName {
+    font-size: 12px;
+    line-height: 16px;
+    padding: 1px 8px;
+  }
+
+  .likeButton {
+    width: 28px;
+    height: 28px;
+  }
+
+  .likeIcon {
+    width: 12px;
+    height: 12px;
+  }
 }

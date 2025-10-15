@@ -1,9 +1,13 @@
 import { APIkey, latitude, longitude, baseUrl } from "./constants";
 
 export const getWeatherCondition = (temperature) => {
-  if (temperature >= 86) return "hot";
-  if (temperature >= 66) return "warm";
-  return "cold";
+  if (temperature >= 86) {
+    return "hot";
+  } else if (temperature >= 66) {
+    return "warm";
+  } else {
+    return "cold";
+  }
 };
 
 const parseWeatherData = (data) => {
@@ -27,7 +31,7 @@ const getMockWeatherData = () => ({
 
 export const getWeatherData = async () => {
   const url = `${baseUrl}?key=${APIkey}&q=${latitude},${longitude}&aqi=no`;
-  
+
   try {
     const response = await fetch(url);
     if (!response.ok) {
