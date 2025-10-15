@@ -18,7 +18,7 @@ WTWR is a React-based weather application that helps users decide what to wear b
 - **React 18.3.1**: Functional components with hooks (useState, useEffect)
 - **Vite 5.4.20**: Fast development server and build tool
 - **CSS Modules**: Scoped styling approach for component isolation
-- **Weather API**: Real-time weather data integration using WeatherAPI.com
+- **Weather API**: Real-time weather data integration using WeatherAPI.com (Note: TripleTen originally suggested OpenWeatherMap, but WeatherAPI.com was used due to account creation issues)
 - **JavaScript ES6+**: Modern JavaScript features including async/await, destructuring, and arrow functions
 - **Responsive Design**: CSS Grid, Flexbox, and media queries for mobile-first design
 - **Form Validation**: Client-side validation with error states and user feedback
