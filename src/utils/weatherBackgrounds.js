@@ -1,3 +1,17 @@
+// Import all weather background images
+import daySunny from "../assets/Day-Sunny.png";
+import dayCloudy from "../assets/Day-Cloudy.png";
+import dayRain from "../assets/Day-Rain.png";
+import daySnow from "../assets/Day-Snow.png";
+import dayStorm from "../assets/Day-Storm.png";
+import dayFog from "../assets/Day-fog.png";
+import nightSunny from "../assets/Night-Sunny.png";
+import nightCloudy from "../assets/Night-Cloudy.png";
+import nightRain from "../assets/Night-Rain.png";
+import nightSnow from "../assets/Night-Snow.png";
+import nightStorm from "../assets/Night-Storm.png";
+import nightFog from "../assets/Night-Fog.png";
+
 // Function to determine if it's day or night based on current time
 export const getTimeOfDay = () => {
   const hour = new Date().getHours();
@@ -9,21 +23,19 @@ export const getWeatherBackground = (condition, isDay = null) => {
   const timeOfDay =
     isDay !== null
       ? isDay
-        ? "Day"
-        : "Night"
-      : getTimeOfDay() === "day"
-        ? "Day"
-        : "Night";
+        ? "day"
+        : "night"
+      : getTimeOfDay();
 
   // Normalize condition to lowercase for comparison
   const normalizedCondition = condition?.toLowerCase() || "";
 
-  // Map weather conditions to your existing PNG files
+  // Map weather conditions to imported images
   if (
     normalizedCondition.includes("sunny") ||
     normalizedCondition.includes("clear")
   ) {
-    return `/src/assets/${timeOfDay}-Sunny.png`;
+    return timeOfDay === "day" ? daySunny : nightSunny;
   }
 
   if (
@@ -31,37 +43,37 @@ export const getWeatherBackground = (condition, isDay = null) => {
     normalizedCondition.includes("overcast") ||
     normalizedCondition.includes("partly")
   ) {
-    return `/src/assets/${timeOfDay}-Cloudy.png`;
+    return timeOfDay === "day" ? dayCloudy : nightCloudy;
   }
 
   if (
     normalizedCondition.includes("rain") ||
     normalizedCondition.includes("drizzle")
   ) {
-    return `/src/assets/${timeOfDay}-Rain.png`;
+    return timeOfDay === "day" ? dayRain : nightRain;
   }
 
   if (
     normalizedCondition.includes("snow") ||
     normalizedCondition.includes("snowy")
   ) {
-    return `/src/assets/${timeOfDay}-Snow.png`;
+    return timeOfDay === "day" ? daySnow : nightSnow;
   }
 
   if (
     normalizedCondition.includes("storm") ||
     normalizedCondition.includes("thunder")
   ) {
-    return `/src/assets/${timeOfDay}-Storm.png`;
+    return timeOfDay === "day" ? dayStorm : nightStorm;
   }
 
   if (
     normalizedCondition.includes("fog") ||
     normalizedCondition.includes("mist")
   ) {
-    return `/src/assets/${timeOfDay}-Fog.png`;
+    return timeOfDay === "day" ? dayFog : nightFog;
   }
 
   // Default fallback
-  return `/src/assets/${timeOfDay}-Cloudy.png`;
+  return timeOfDay === "day" ? dayCloudy : nightCloudy;
 };

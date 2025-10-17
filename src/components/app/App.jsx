@@ -13,6 +13,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState(defaultClothingItems);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleOpenAddItemModal = () => setActiveModal("add-garment");
   const handleCloseModal = () => setActiveModal("");
@@ -40,10 +41,21 @@ function App() {
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
+        setIsLoading(true);
         const weather = await getWeatherData();
         setWeatherData(weather);
       } catch (error) {
         console.error("Failed to fetch weather data:", error);
+        // Set fallback weather data
+        setWeatherData({
+          temperature: 75,
+          location: "New York",
+          weather: "warm",
+          condition: "clear",
+          isDay: true,
+        });
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchWeatherData();
@@ -66,11 +78,15 @@ function App() {
         onAddItemClick={handleOpenAddItemModal}
         weatherData={weatherData}
       />
-      <Main
-        weatherData={weatherData}
-        clothingItems={clothingItems}
-        onCardClick={handleCardClick}
-      />
+      {isLoading ? (
+        <div className={styles.loading}>Loading weather data...</div>
+      ) : (
+        <Main
+          weatherData={weatherData}
+          clothingItems={clothingItems}
+          onCardClick={handleCardClick}
+        />
+      )}
       <Footer />
 
       <ModalWithForm

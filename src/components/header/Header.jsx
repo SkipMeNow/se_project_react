@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styles from "./Header.module.css";
+import wtwrLogo from "../../assets/wtwrLogo.svg";
+import avatar from "../../assets/Avatar.svg";
 
 export default function Header({ onAddItemClick, weatherData }) {
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
@@ -16,11 +18,7 @@ export default function Header({ onAddItemClick, weatherData }) {
   return (
     <header className={styles.header}>
       <div className={styles.headerLeft}>
-        <img
-          src="/src/assets/wtwrLogo.svg"
-          alt="WTWR logo"
-          className={styles.logo}
-        />
+        <img src={wtwrLogo} alt="WTWR logo" className={styles.logo} />
         <p className={styles.dateLocation}>
           {currentDate}, {weatherData.location || "Loading location..."}
         </p>
@@ -36,11 +34,7 @@ export default function Header({ onAddItemClick, weatherData }) {
           + Add clothes
         </button>
         <p className={styles.username}>Terrence Tegegne</p>
-        <img
-          src="/src/assets/Avatar.svg"
-          alt="Terrence Tegegne"
-          className={styles.avatar}
-        />
+        <img src={avatar} alt="Terrence Tegegne" className={styles.avatar} />
       </div>
 
       {/* Mobile Menu Button */}
@@ -88,11 +82,7 @@ export default function Header({ onAddItemClick, weatherData }) {
         </button>
         <div className={styles.mobileUserInfo}>
           <p className={styles.mobileUsername}>Terrence Tegegne</p>
-          <img
-            src="/src/assets/Avatar.svg"
-            alt="Terrence Tegegne"
-            className={styles.mobileAvatar}
-          />
+          <img src={avatar} alt="Terrence Tegegne" className={styles.mobileAvatar} />
         </div>
       </nav>
     </header>

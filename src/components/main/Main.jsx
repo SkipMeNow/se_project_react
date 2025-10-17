@@ -8,8 +8,12 @@ export default function Main({ weatherData, clothingItems, onCardClick }) {
     day: "numeric",
   });
 
+  // Guard against undefined weatherData
+  const temperature = weatherData.temperature ?? "Loading";
+  const weatherType = weatherData.weather || "warm"; // Default to warm if undefined
+
   const filteredItems = clothingItems.filter(
-    (item) => item.weather === weatherData.weather
+    (item) => item.weather === weatherType
   );
 
   return (
@@ -18,8 +22,7 @@ export default function Main({ weatherData, clothingItems, onCardClick }) {
 
       <section className={styles.clothingSection}>
         <p className={styles.sectionTitle}>
-          Today is {currentDate} / {weatherData.temperature}°F / You may want to
-          wear:
+          Today is {currentDate} / {temperature}°F / You may want to wear:
         </p>
         <ul className={styles.clothingList}>
           {filteredItems.map((card) => (
