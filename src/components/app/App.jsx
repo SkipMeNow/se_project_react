@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "../header/Header";
 import Main from "../main/Main";
 import Footer from "../footer/Footer";
-import ModalWithForm from "../modal-with-form/ModalWithForm";
+import AddGarmentModal from "../add-garment-modal/AddGarmentModal";
 import ItemModal from "../item-modal/ItemModal";
 import { getWeatherData } from "../../utils/weatherApi";
 import { defaultClothingItems } from "../../utils/clothingItems";
@@ -22,20 +22,16 @@ function App() {
     setSelectedCard(card);
   };
 
-  const handleAddItemSubmit = (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
+  const handleAddItemSubmit = (values) => {
     const newItem = {
       _id: Date.now().toString(), // Simple ID generation
-      name: formData.get("name"),
-      weather: formData.get("weather"),
-      link: formData.get("imageUrl"),
+      name: values.name,
+      weather: values.weather,
+      link: values.imageUrl,
     };
 
     setClothingItems((prevItems) => [...prevItems, newItem]);
     handleCloseModal();
-    event.target.reset(); // Clear the form
   };
 
   useEffect(() => {
@@ -89,10 +85,7 @@ function App() {
       )}
       <Footer />
 
-      <ModalWithForm
-        title="New garment"
-        buttonText="Add garment"
-        name="add-garment"
+      <AddGarmentModal
         isOpen={activeModal === "add-garment"}
         onClose={handleCloseModal}
         onSubmit={handleAddItemSubmit}

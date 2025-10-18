@@ -1,0 +1,2 @@
+/* Import all styles from ModalWithForm since we're using the same styling */
+@import "../modal-with-form/ModalWithForm.module.css";

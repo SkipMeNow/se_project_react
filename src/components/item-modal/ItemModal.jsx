@@ -1,14 +1,13 @@
+import useModalClose from "../../hooks/useModalClose";
 import styles from "./ItemModal.module.css";
 
 export default function ItemModal({ card, isOpen, onClose }) {
-  const handleOverlayClick = (e) => {
-    if (e.target === e.currentTarget) onClose();
-  };
+  // Use custom hook for escape and overlay handling
+  useModalClose(isOpen, onClose);
 
   return (
     <div
-      className={`${styles.modal} ${isOpen ? styles.modal_opened : ""}`}
-      onClick={handleOverlayClick}
+      className={`modal ${styles.modal} ${isOpen ? styles.modal_opened : ""}`}
     >
       <div className={styles.modal__container}>
         <button type="button" className={styles.modal__close} onClick={onClose}>
