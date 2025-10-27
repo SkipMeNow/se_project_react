@@ -19,6 +19,22 @@
   gap: 20px;
 }
 
+.logoLink {
+  text-decoration: none;
+}
+
+.profileLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.profileLink:hover {
+  opacity: 0.8;
+}
+
 .logo {
   height: 40px;
   width: auto;
@@ -98,7 +114,7 @@
   background: white;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding: 20px 16px;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 16px;
   transform: translateY(-100%);
   opacity: 0;
@@ -139,6 +155,13 @@
   align-items: center;
   gap: 12px;
   padding: 12px 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.mobileUserInfo:hover {
+  opacity: 0.8;
 }
 
 .mobileUsername {
@@ -163,7 +186,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .header {
     position: relative;
     padding: 24px 16px 0;

@@ -113,4 +113,31 @@
     top: 16px;
     right: 16px;
   }
+
+  .modal__deleteButton {
+    bottom: 20px;
+    right: 20px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+
+.modal__deleteButton {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  font-family: "Cabinet Grotesk", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #FF6B35;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal__deleteButton:hover {
+  opacity: 0.6;
 }

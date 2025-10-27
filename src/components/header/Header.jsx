@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import ToggleSwitch from "../toggle-switch/ToggleSwitch";
 import styles from "./Header.module.css";
 import wtwrLogo from "../../assets/wtwrLogo.svg";
 import avatar from "../../assets/Avatar.svg";
@@ -18,7 +20,9 @@ export default function Header({ onAddItemClick, weatherData }) {
   return (
     <header className={styles.header}>
       <div className={styles.headerLeft}>
-        <img src={wtwrLogo} alt="WTWR logo" className={styles.logo} />
+        <Link to="/" className={styles.logoLink}>
+          <img src={wtwrLogo} alt="WTWR logo" className={styles.logo} />
+        </Link>
         <p className={styles.dateLocation}>
           {currentDate}, {weatherData.location || "Loading location..."}
         </p>
@@ -26,6 +30,7 @@ export default function Header({ onAddItemClick, weatherData }) {
 
       {/* Desktop Navigation */}
       <div className={styles.headerRight}>
+        <ToggleSwitch />
         <button
           type="button"
           className={styles.addButton}
@@ -33,8 +38,10 @@ export default function Header({ onAddItemClick, weatherData }) {
         >
           + Add clothes
         </button>
-        <p className={styles.username}>Terrence Tegegne</p>
-        <img src={avatar} alt="Terrence Tegegne" className={styles.avatar} />
+        <Link to="/profile" className={styles.profileLink}>
+          <p className={styles.username}>Terrence Tegegne</p>
+          <img src={avatar} alt="Terrence Tegegne" className={styles.avatar} />
+        </Link>
       </div>
 
       {/* Mobile Menu Button */}
@@ -80,10 +87,14 @@ export default function Header({ onAddItemClick, weatherData }) {
         >
           + Add clothes
         </button>
-        <div className={styles.mobileUserInfo}>
+        <Link 
+          to="/profile" 
+          className={styles.mobileUserInfo}
+          onClick={toggleMobileMenu}
+        >
           <p className={styles.mobileUsername}>Terrence Tegegne</p>
           <img src={avatar} alt="Terrence Tegegne" className={styles.mobileAvatar} />
-        </div>
+        </Link>
       </nav>
     </header>
   );

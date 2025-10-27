@@ -1,9 +1,13 @@
 import useModalClose from "../../hooks/useModalClose";
 import styles from "./ItemModal.module.css";
 
-export default function ItemModal({ card, isOpen, onClose }) {
+export default function ItemModal({ card, isOpen, onClose, onDeleteItem }) {
   // Use custom hook for escape and overlay handling
   useModalClose(isOpen, onClose);
+
+  const handleDeleteClick = () => {
+    onDeleteItem(card);
+  };
 
   return (
     <div
@@ -18,6 +22,13 @@ export default function ItemModal({ card, isOpen, onClose }) {
           <h3 className={styles.modal__title}>{card.name}</h3>
           <p className={styles.modal__weather}>Weather: {card.weather}</p>
         </div>
+        <button 
+          type="button" 
+          className={styles.modal__deleteButton}
+          onClick={handleDeleteClick}
+        >
+          Delete item
+        </button>
       </div>
     </div>
   );

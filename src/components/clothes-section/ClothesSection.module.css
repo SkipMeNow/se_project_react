@@ -1,0 +1,82 @@
+.clothes {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+}
+
+.clothes__header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.clothes__title {
+    font-family: "Cabinet Grotesk", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 0;
+    color: #000;
+}
+
+.clothes__addButton {
+    font-family: "Cabinet Grotesk", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.2;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.clothes__addButton:hover {
+    opacity: 1;
+}
+
+.clothes__list {
+    display: grid;
+    grid-template-columns: repeat(3, 325px);
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    justify-content: start;
+}
+
+/* Tablet: Allow wrapping at 325px */
+@media screen and (max-width: 1045px) {
+    .clothes__list {
+        grid-template-columns: repeat(auto-fit, 325px);
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .clothes {
+        gap: 20px;
+    }
+
+    .clothes__title {
+        font-size: 16px;
+    }
+
+    .clothes__addButton {
+        font-size: 16px;
+    }
+
+    .clothes__list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .clothes__list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}

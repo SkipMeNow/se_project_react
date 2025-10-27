@@ -12,8 +12,12 @@ export const getWeatherCondition = (temperature) => {
 
 const parseWeatherData = (data) => {
   const tempF = Math.round(data.current.temp_f);
+  const tempC = Math.round(data.current.temp_c);
   return {
-    temperature: tempF,
+    temperature: {
+      F: tempF,
+      C: tempC,
+    },
     location: data.location.name,
     weather: getWeatherCondition(tempF),
     condition: data.current.condition.text.toLowerCase(),
@@ -22,7 +26,10 @@ const parseWeatherData = (data) => {
 };
 
 const getMockWeatherData = () => ({
-  temperature: 75,
+  temperature: {
+    F: 75,
+    C: 24,
+  },
   location: "New York",
   weather: "warm",
   condition: "clear",

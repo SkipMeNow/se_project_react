@@ -1,7 +1,10 @@
+import { useContext } from "react";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import styles from "./WeatherCard.module.css";
 import { getWeatherBackground } from "../../utils/weatherBackgrounds";
 
 export default function WeatherCard({ weatherData }) {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const backgroundImage = getWeatherBackground(
     weatherData.condition,
     weatherData.isDay
@@ -15,7 +18,7 @@ export default function WeatherCard({ weatherData }) {
   return (
     <section className={styles.weatherCard}>
       <p className={styles.temperature}>
-        {weatherData.temperature ?? "Loading"}°F
+        {weatherData.temperature?.[currentTemperatureUnit] ?? "Loading"}°{currentTemperatureUnit}
       </p>
       <img
         src={backgroundImage}

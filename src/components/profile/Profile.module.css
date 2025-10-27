@@ -1,0 +1,50 @@
+.profile {
+    /* max-width: 1200px; */
+    display: flex;
+    gap: 120px;
+    min-height: calc(100vh - 124px);
+    padding: 32px 40px 0;
+}
+
+.profile__sidebar {
+    width: 229px;
+    height: 56px;
+}
+
+.profile__clothes {
+    flex: 1;
+    max-width: calc(100% - 349px);
+}
+
+@media screen and (max-width: 1199px) {
+    .profile {
+        gap: 60px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .profile {
+        flex-direction: column;
+        gap: 24px;
+        padding: 20px 16px;
+        min-height: auto;
+    }
+
+    .profile__sidebar {
+        width: 100%;
+        height: auto;
+        align-self: flex-start;
+    }
+
+    .profile__clothes {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile {
+        padding: 16px 12px;
+        gap: 20px;
+    }
+}
