@@ -114,6 +114,7 @@ function App() {
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
         <BrowserRouter
+          basename="/se_project_react"
           future={{
             v7_startTransition: true,
             v7_relativeSplatPath: true,
