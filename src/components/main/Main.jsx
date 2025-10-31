@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import WeatherCard from "../weather-card/WeatherCard";
 import ItemCard from "../item-card/ItemCard";
+import { getItemId } from "../../utils/itemUtils";
 import styles from "./Main.module.css";
 
 export default function Main({ weatherData, clothingItems, onCardClick }) {
@@ -29,7 +30,7 @@ export default function Main({ weatherData, clothingItems, onCardClick }) {
         </p>
         <ul className={styles.clothingList}>
           {filteredItems.map((card) => (
-            <ItemCard key={card.id} card={card} onCardClick={onCardClick} />
+            <ItemCard key={getItemId(card)} card={card} onCardClick={onCardClick} />
           ))}
         </ul>
       </section>

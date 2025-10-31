@@ -9,7 +9,7 @@ export default function ItemCard({ card, onCardClick }) {
         <h2 className={styles.cardName}>{card.name}</h2>
       </div>
       <img
-        src={card.link}
+        src={card.imageUrl}
         alt={card.name}
         className={styles.cardImage}
         onClick={handleClick}

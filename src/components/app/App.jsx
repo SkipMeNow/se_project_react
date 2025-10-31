@@ -10,6 +10,7 @@ import DeleteConfirmationModal from "../delete-confirmation-modal/DeleteConfirma
 import { getWeatherData } from "../../utils/weatherApi";
 import { getItems, addItem, deleteItem } from "../../utils/api";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { getItemId } from "../../utils/itemUtils";
 import styles from "./App.module.css";
 
 function App() {
@@ -53,10 +54,11 @@ function App() {
 
   const handleConfirmDelete = () => {
     if (cardToDelete) {
-      deleteItem(cardToDelete.id)
+      const itemId = getItemId(cardToDelete);
+      deleteItem(itemId)
         .then(() => {
           setClothingItems((prevItems) => 
-            prevItems.filter((item) => item.id !== cardToDelete.id)
+            prevItems.filter((item) => getItemId(item) !== itemId)
           );
           setCardToDelete(null);
           handleCloseModal();

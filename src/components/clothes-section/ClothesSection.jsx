@@ -1,4 +1,5 @@
 import ItemCard from "../item-card/ItemCard";
+import { getItemId } from "../../utils/itemUtils";
 import styles from "./ClothesSection.module.css";
 
 export default function ClothesSection({ clothingItems, onCardClick, onAddItemClick }) {
@@ -17,7 +18,7 @@ export default function ClothesSection({ clothingItems, onCardClick, onAddItemCl
       <ul className={styles.clothes__list}>
         {clothingItems.map((item) => (
           <ItemCard 
-            key={item.id} 
+            key={getItemId(item)} 
             card={item} 
             onCardClick={onCardClick} 
           />

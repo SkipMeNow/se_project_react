@@ -1,4 +1,5 @@
-import { APIkey, latitude, longitude, baseUrl } from "./constants";
+import { apiKey, latitude, longitude, baseUrl } from "./constants";
+import { request } from "./api";
 
 export const getWeatherCondition = (temperature) => {
   if (temperature >= 86) {
@@ -37,14 +38,10 @@ const getMockWeatherData = () => ({
 });
 
 export const getWeatherData = async () => {
-  const url = `${baseUrl}?key=${APIkey}&q=${latitude},${longitude}&aqi=no`;
+  const url = `${baseUrl}?key=${apiKey}&q=${latitude},${longitude}&aqi=no`;
 
   try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Weather API error: ${response.status}`);
-    }
-    const data = await response.json();
+    const data = await request(url);
     return parseWeatherData(data);
   } catch (error) {
     console.error("Weather API failed, using fallback:", error.message);
